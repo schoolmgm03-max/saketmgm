@@ -15,6 +15,7 @@ const navItems = [
   { name: "Testimonials", path: "/admin/testimonials" },
   { name: "Transfer Certificate", path: "/admin/transferCertificate" },
   { name: "Academics", path: "/admin/academics" },
+  { name: "Mandatory Enclosures", path: "/admin/mandatoryEnclosures" },
 ];
 
 
