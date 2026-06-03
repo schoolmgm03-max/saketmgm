@@ -47,19 +47,25 @@ export default function NewsSection() {
               key={item._id}
               className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition"
             >
-              <div className="relative h-52 w-full">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
+              <a href={`/news/${item._id}`} className="block">
+                <div className="relative h-52 w-full">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </a>
               <div className="p-4 text-left">
-                <h3 className="font-semibold text-lg text-gray-900">{item.title}</h3>
+                <a href={`/news/${item._id}`} className="block">
+                  <h3 className="font-semibold text-lg text-gray-900 hover:text-[#f82f53] transition">
+                    {item.title}
+                  </h3>
+                </a>
                 <p className="text-sm text-gray-500 mt-1">{item.date}</p>
                 <a
-                  href="#"
+                  href={`/news/${item._id}`}
                   className="text-[#f82f53] text-sm font-medium mt-2 inline-block hover:underline"
                 >
                   Read More

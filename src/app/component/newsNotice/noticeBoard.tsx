@@ -67,11 +67,13 @@ export default function NoticeBoard() {
               key={item._id}
               className="bg-white rounded-lg shadow-md overflow-hidden"
             >
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-48 object-cover"
-              />
+              <a href={`/news/${item._id}`} className="block">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-48 object-cover"
+                />
+              </a>
               <div className="p-4">
                 <div className="flex justify-between items-center mb-2">
                   <span className="bg-blue-100 text-blue-800 text-sm font-semibold px-2 py-1 rounded">
@@ -79,7 +81,11 @@ export default function NoticeBoard() {
                   </span>
                   <span className="text-gray-500 text-sm">{item.date}</span>
                 </div>
-                <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                <a href={`/news/${item._id}`} className="block">
+                  <h3 className="text-lg font-bold mb-2 hover:text-[#f82f53] transition">
+                    {item.title}
+                  </h3>
+                </a>
                 <p className="text-gray-600">
                   {item.content && item.content.length > 100
                     ? item.content.slice(0, 100) + "..."
@@ -87,8 +93,8 @@ export default function NoticeBoard() {
                 </p>
                 {item.content && item.content.length > 100 && (
                   <a
-                    href="#"
-                    className="text-red-500 font-semibold mt-2 inline-block"
+                    href={`/news/${item._id}`}
+                    className="text-red-500 font-semibold mt-2 inline-block hover:underline"
                   >
                     Read More
                   </a>
