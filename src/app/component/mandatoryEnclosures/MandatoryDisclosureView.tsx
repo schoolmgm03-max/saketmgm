@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { 
-  Printer, 
-  Download, 
-  ExternalLink, 
-  FileText, 
-  School, 
-  Users, 
+import {
+  Printer,
+  Download,
+  ExternalLink,
+  FileText,
+  School,
+  Users,
   Building2,
   Calendar,
   AlertTriangle
@@ -155,8 +155,8 @@ export default function MandatoryDisclosureView() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 py-8 px-4 md:px-8 print:bg-white print:p-0 print:min-h-0">
-      
+    <div className="min-h-screen bg-slate-50 py-4 sm:py-8 px-2 sm:px-4 md:px-8 print:bg-white print:p-0 print:min-h-0">
+
       {/* Dynamic Style Sheet for Printing */}
       <style jsx global>{`
         @media print {
@@ -210,39 +210,38 @@ export default function MandatoryDisclosureView() {
         }
       `}</style>
 
-      <div className="max-w-5xl mx-auto print-container bg-white shadow-xl rounded-2xl border border-slate-200 overflow-hidden print:border-none print:shadow-none print:rounded-none">
-        
+      <div className="max-w-5xl mx-auto print-container bg-white shadow-xl rounded-xl sm:rounded-2xl border border-slate-200 overflow-hidden print:border-none print:shadow-none print:rounded-none">
+
         {/* Top Actions Panel */}
-        <div className="no-print bg-slate-900 text-white px-6 py-4 flex flex-col sm:flex-row justify-between items-center border-b border-slate-800 gap-4">
-          <div className="flex items-center gap-3">
-            <div className="bg-[#f82f53] p-2 rounded-lg text-white">
-              <Building2 size={24} />
+        <div className="no-print bg-slate-900 text-white px-4 sm:px-6 py-3 sm:py-4 flex flex-col sm:flex-row justify-between items-center border-b border-slate-800 gap-3 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="bg-[#f82f53] p-1.5 sm:p-2 rounded-lg text-white flex-shrink-0">
+              <Building2 size={20} className="sm:w-6 sm:h-6" />
             </div>
             <div>
-              <h1 className="text-lg font-bold tracking-wide">MANDATORY PUBLIC DISCLOSURE</h1>
-              <p className="text-xs text-slate-400">Appendix - IX (CBSE Compliance Document)</p>
+              <h1 className="text-base sm:text-lg font-bold tracking-wide">MANDATORY PUBLIC DISCLOSURE</h1>
+              <p className="text-[10px] sm:text-xs text-slate-400">Appendix - IX (CBSE Compliance Document)</p>
             </div>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
             <button
               onClick={handlePrint}
-              className="flex items-center gap-2 bg-[#f82f53] hover:bg-[#d82444] text-white px-4 py-2 rounded-xl text-sm font-semibold transition-all shadow-md active:scale-95"
+              className="flex items-center gap-2 bg-[#f82f53] hover:bg-[#d82444] text-white px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all shadow-md active:scale-95 whitespace-nowrap"
             >
-              <Printer size={16} />
+              <Printer size={14} className="sm:w-4 sm:h-4" />
               Print / Save PDF
             </button>
           </div>
         </div>
 
         {/* Section Navigation Tabs (Web View Only) */}
-        <div className="no-print bg-white border-b border-slate-200 px-6 py-3 flex flex-wrap gap-2 sticky top-0 z-40 shadow-sm overflow-x-auto scrollbar-hide">
+        <div className="no-print bg-white border-b border-slate-200 px-3 sm:px-6 py-2 sm:py-3 flex flex-nowrap gap-1.5 sm:gap-2 sticky top-0 z-40 shadow-sm overflow-x-auto scrollbar-hide whitespace-nowrap">
           <button
             onClick={() => setActiveTab("all")}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all ${
-              activeTab === "all"
-                ? "bg-[#f82f53] text-white"
-                : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-            }`}
+            className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-[10px] sm:text-xs font-semibold tracking-wide transition-all flex-shrink-0 ${activeTab === "all"
+              ? "bg-[#f82f53] text-white"
+              : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+              }`}
           >
             All Sections
           </button>
@@ -256,35 +255,35 @@ export default function MandatoryDisclosureView() {
                   el.scrollIntoView({ behavior: "smooth", block: "start" });
                 }
               }}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all ${
-                activeTab === sec.id
-                  ? "bg-slate-900 text-white"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-              }`}
+              className={`flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-[10px] sm:text-xs font-semibold tracking-wide transition-all flex-shrink-0 ${activeTab === sec.id
+                ? "bg-slate-900 text-white"
+                : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                }`}
             >
               {sec.icon}
-              {sec.label}
+              <span className="hidden sm:inline">{sec.label}</span>
+              <span className="sm:hidden">{sec.label.split(":")[0]}</span>
             </button>
           ))}
         </div>
 
         {/* Main CBSE Public Disclosure Form */}
-        <div className="p-8 md:p-10 space-y-12 print:p-0 print:space-y-6">
-          
+        <div className="p-4 sm:p-6 md:p-10 space-y-8 sm:space-y-12 print:p-0 print:space-y-6">
+
           {/* Header Banner */}
-          <div className="text-center border-b-2 border-double border-slate-300 pb-8 print:pb-4">
-            <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight print:text-lg">
+          <div className="text-center border-b-2 border-double border-slate-300 pb-6 sm:pb-8 print:pb-4">
+            <h2 className="text-lg sm:text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight print:text-lg">
               {disclosure.schoolInfo.find(info => info.id === 1)?.value || "SAKET MGM SENIOR SECONDARY SCHOOL"}
             </h2>
-            <p className="text-[#f82f53] font-bold text-sm tracking-widest mt-1 print:text-black print:text-xs">
+            <p className="text-[#f82f53] font-bold text-xs sm:text-sm tracking-widest mt-1 print:text-black print:text-xs">
               CBSE MANDATORY PUBLIC DISCLOSURE
             </p>
-            <p className="text-xs text-slate-500 font-medium mt-1 print:text-black">
+            <p className="text-[10px] sm:text-xs text-slate-500 font-medium mt-1 print:text-black">
               APPENDIX - IX (REVISED FORMAT)
             </p>
-            <div className="flex justify-center gap-6 mt-3 text-xs text-slate-600 font-semibold print:text-black print:mt-1">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-1 sm:gap-6 mt-3 text-[10px] sm:text-xs text-slate-600 font-semibold print:text-black print:mt-1">
               <span>Affiliation No.: {disclosure.schoolInfo.find(info => info.id === 2)?.value || "1030477"}</span>
-              <span>•</span>
+              <span className="hidden sm:inline">•</span>
               <span>School Code: {disclosure.schoolInfo.find(info => info.id === 3)?.value || "50498"}</span>
             </div>
             {activeTab !== "all" && (
@@ -299,26 +298,26 @@ export default function MandatoryDisclosureView() {
           {/* A: GENERAL INFORMATION */}
           {(activeTab === "all" || activeTab === "general") && (
             <section id="general" className="scroll-mt-20">
-              <h3 className="text-lg font-bold text-slate-800 border-l-4 border-[#f82f53] pl-3 mb-6 print:border-none print:pl-0 print:text-xs print:font-extrabold print:mb-2 flex items-center gap-2">
-                <span className="bg-[#f82f53] text-white w-6 h-6 rounded-full flex items-center justify-center text-xs print:hidden">A</span>
+              <h3 className="text-base sm:text-lg font-bold text-slate-800 border-l-4 border-[#f82f53] pl-2 sm:pl-3 mb-4 sm:mb-6 print:border-none print:pl-0 print:text-xs print:font-extrabold print:mb-2 flex items-center gap-2">
+                <span className="bg-[#f82f53] text-white w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-[10px] sm:text-xs flex-shrink-0 print:hidden">A</span>
                 A: GENERAL INFORMATION
               </h3>
-              
-              <div className="overflow-hidden border border-slate-200 rounded-xl print:rounded-none print:border-black">
-                <table className="w-full text-left border-collapse">
+
+              <div className="overflow-x-auto border border-slate-200 rounded-xl print:rounded-none print:border-black">
+                <table className="w-full text-left border-collapse min-w-[500px]">
                   <thead>
                     <tr className="bg-slate-50 border-b border-slate-200 print:bg-slate-100 print:border-black">
-                      <th className="px-6 py-4 font-bold text-slate-700 text-sm w-20 print:px-2 print:py-1">SL NO.</th>
-                      <th className="px-6 py-4 font-bold text-slate-700 text-sm print:px-2 print:py-1">INFORMATION</th>
-                      <th className="px-6 py-4 font-bold text-slate-700 text-sm print:px-2 print:py-1">DETAILS</th>
+                      <th className="px-3 sm:px-6 py-2.5 sm:py-4 font-bold text-slate-700 text-xs sm:text-sm w-16 sm:w-20 print:px-2 print:py-1">SL NO.</th>
+                      <th className="px-3 sm:px-6 py-2.5 sm:py-4 font-bold text-slate-700 text-xs sm:text-sm print:px-2 print:py-1">INFORMATION</th>
+                      <th className="px-3 sm:px-6 py-2.5 sm:py-4 font-bold text-slate-700 text-xs sm:text-sm print:px-2 print:py-1">DETAILS</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200 print:divide-black">
                     {disclosure.schoolInfo.map((info) => (
                       <tr key={info.id} className="hover:bg-slate-50/50 transition">
-                        <td className="px-6 py-3.5 text-slate-600 font-semibold text-sm print:px-2 print:py-1">{info.id}</td>
-                        <td className="px-6 py-3.5 text-slate-800 font-bold text-xs uppercase tracking-wider print:px-2 print:py-1">{info.label}</td>
-                        <td className="px-6 py-3.5 text-slate-900 font-semibold text-sm print:px-2 print:py-1">{info.value}</td>
+                        <td className="px-3 sm:px-6 py-2.5 sm:py-3.5 text-slate-600 font-semibold text-xs sm:text-sm print:px-2 print:py-1">{info.id}</td>
+                        <td className="px-3 sm:px-6 py-2.5 sm:py-3.5 text-slate-800 font-bold text-[10px] sm:text-xs uppercase tracking-wider print:px-2 print:py-1">{info.label}</td>
+                        <td className="px-3 sm:px-6 py-2.5 sm:py-3.5 text-slate-900 font-semibold text-xs sm:text-sm print:px-2 print:py-1">{info.value}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -330,33 +329,33 @@ export default function MandatoryDisclosureView() {
           {/* B: DOCUMENTS AND INFORMATION */}
           {(activeTab === "all" || activeTab === "documents") && (
             <section id="documents" className={`scroll-mt-20 ${activeTab === "all" ? "page-break" : ""}`}>
-              <h3 className="text-lg font-bold text-slate-800 border-l-4 border-[#f82f53] pl-3 mb-4 print:border-none print:pl-0 print:text-xs print:font-extrabold print:mb-2 flex items-center gap-2">
-                <span className="bg-[#f82f53] text-white w-6 h-6 rounded-full flex items-center justify-center text-xs print:hidden">B</span>
+              <h3 className="text-base sm:text-lg font-bold text-slate-800 border-l-4 border-[#f82f53] pl-2 sm:pl-3 mb-3 sm:mb-4 print:border-none print:pl-0 print:text-xs print:font-extrabold print:mb-2 flex items-center gap-2">
+                <span className="bg-[#f82f53] text-white w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-[10px] sm:text-xs flex-shrink-0 print:hidden">B</span>
                 B: DOCUMENTS AND INFORMATION
               </h3>
-              
-              <div className="overflow-hidden border border-slate-200 rounded-xl print:rounded-none print:border-black mb-4">
-                <table className="w-full text-left border-collapse">
+
+              <div className="overflow-x-auto border border-slate-200 rounded-xl print:rounded-none print:border-black mb-4">
+                <table className="w-full text-left border-collapse min-w-[500px]">
                   <thead>
                     <tr className="bg-slate-50 border-b border-slate-200 print:bg-slate-100 print:border-black">
-                      <th className="px-6 py-4 font-bold text-slate-700 text-sm w-20 print:px-2 print:py-1">SL NO.</th>
-                      <th className="px-6 py-4 font-bold text-slate-700 text-sm print:px-2 print:py-1">DOCUMENTS / INFORMATION</th>
-                      <th className="px-6 py-4 font-bold text-slate-700 text-sm w-44 text-center print:px-2 print:py-1">UPLOAD DOCUMENTS</th>
+                      <th className="px-3 sm:px-6 py-2.5 sm:py-4 font-bold text-slate-700 text-xs sm:text-sm w-16 sm:w-20 print:px-2 print:py-1">SL NO.</th>
+                      <th className="px-3 sm:px-6 py-2.5 sm:py-4 font-bold text-slate-700 text-xs sm:text-sm print:px-2 print:py-1">DOCUMENTS / INFORMATION</th>
+                      <th className="px-3 sm:px-6 py-2.5 sm:py-4 font-bold text-slate-700 text-xs sm:text-sm w-36 sm:w-44 text-center print:px-2 print:py-1">UPLOAD DOCUMENTS</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200 print:divide-black">
                     {disclosure.documents.map((doc) => (
                       <tr key={doc.id} className="hover:bg-slate-50/50 transition">
-                        <td className="px-6 py-3.5 text-slate-600 font-semibold text-sm print:px-2 print:py-1">{doc.id}</td>
-                        <td className="px-6 py-3.5 text-slate-800 font-semibold text-xs leading-relaxed print:px-2 print:py-1">{doc.title}</td>
-                        <td className="px-6 py-3.5 text-center print:px-2 print:py-1">
+                        <td className="px-3 sm:px-6 py-2.5 sm:py-3.5 text-slate-600 font-semibold text-xs sm:text-sm print:px-2 print:py-1">{doc.id}</td>
+                        <td className="px-3 sm:px-6 py-2.5 sm:py-3.5 text-slate-800 font-semibold text-[10px] sm:text-xs leading-relaxed print:px-2 print:py-1">{doc.title}</td>
+                        <td className="px-3 sm:px-6 py-2.5 sm:py-3.5 text-center print:px-2 print:py-1">
                           <a
                             href={doc.file}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200 px-3 py-1.5 rounded-lg text-xs font-semibold transition no-print active:scale-95"
+                            className="inline-flex items-center gap-1 sm:gap-1.5 bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-semibold transition no-print active:scale-95 whitespace-nowrap"
                           >
-                            <Download size={12} />
+                            <Download size={10} className="sm:w-3 sm:h-3" />
                             View Document
                           </a>
                           <a
@@ -375,12 +374,12 @@ export default function MandatoryDisclosureView() {
               </div>
 
               {/* CBSE WARNING NOTE */}
-              <div className="bg-amber-50 border-l-4 border-amber-500 rounded-r-xl p-4 text-amber-800 print:bg-white print:border-black print:text-black print:p-2 print:border">
-                <div className="flex gap-3">
+              <div className="bg-amber-50 border-l-4 border-amber-500 rounded-r-xl p-3 sm:p-4 text-amber-800 print:bg-white print:border-black print:text-black print:p-2 print:border">
+                <div className="flex gap-2 sm:gap-3">
                   <div className="text-amber-500 print:hidden flex-shrink-0 mt-0.5">
-                    <AlertTriangle size={18} />
+                    <AlertTriangle size={16} className="sm:w-[18px] sm:h-[18px]" />
                   </div>
-                  <div className="text-xs leading-relaxed font-semibold">
+                  <div className="text-[10px] sm:text-xs leading-relaxed font-semibold">
                     <span className="font-extrabold uppercase">NOTE:</span> THE SCHOOLS NEED TO UPLOAD THE SELF ATTESTED COPIES OF ABOVE LISTED DOCUMENTS BY CHAIRMAN/MANAGER/SECRETARY AND PRINCIPAL. IN CASE, IT IS NOTICED AT A LATER STAGE THAT UPLOADED DOCUMENTS ARE NOT GENUINE THEN THE SCHOOL SHALL BE LIABLE FOR ACTION AS PER NORMS.
                   </div>
                 </div>
@@ -391,31 +390,31 @@ export default function MandatoryDisclosureView() {
           {/* C: RESULT AND ACADEMICS */}
           {(activeTab === "all" || activeTab === "results") && (
             <section id="results" className={`scroll-mt-20 ${activeTab === "all" ? "page-break" : ""}`}>
-              <h3 className="text-lg font-bold text-slate-800 border-l-4 border-[#f82f53] pl-3 mb-6 print:border-none print:pl-0 print:text-xs print:font-extrabold print:mb-2 flex items-center gap-2">
-                <span className="bg-[#f82f53] text-white w-6 h-6 rounded-full flex items-center justify-center text-xs print:hidden">C</span>
+              <h3 className="text-base sm:text-lg font-bold text-slate-800 border-l-4 border-[#f82f53] pl-2 sm:pl-3 mb-6 print:border-none print:pl-0 print:text-xs print:font-extrabold print:mb-2 flex items-center gap-2">
+                <span className="bg-[#f82f53] text-white w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-[10px] sm:text-xs print:hidden">C</span>
                 C: RESULT AND ACADEMICS
               </h3>
-              
-              <div className="overflow-hidden border border-slate-200 rounded-xl print:rounded-none print:border-black mb-8">
-                <table className="w-full text-left border-collapse">
+
+              <div className="overflow-x-auto border border-slate-200 rounded-xl print:rounded-none print:border-black mb-8">
+                <table className="w-full text-left border-collapse min-w-[500px]">
                   <thead>
                     <tr className="bg-slate-50 border-b border-slate-200 print:bg-slate-100 print:border-black">
-                      <th className="px-6 py-4 font-bold text-slate-700 text-sm w-20 print:px-2 print:py-1">SL NO.</th>
-                      <th className="px-6 py-4 font-bold text-slate-700 text-sm print:px-2 print:py-1">DOCUMENTS / INFORMATION</th>
-                      <th className="px-6 py-4 font-bold text-slate-700 text-sm w-44 text-center print:px-2 print:py-1">UPLOAD DOCUMENTS</th>
+                      <th className="px-3 sm:px-6 py-2.5 sm:py-4 font-bold text-slate-700 text-xs sm:text-sm w-20 print:px-2 print:py-1">SL NO.</th>
+                      <th className="px-3 sm:px-6 py-2.5 sm:py-4 font-bold text-slate-700 text-xs sm:text-sm print:px-2 print:py-1">DOCUMENTS / INFORMATION</th>
+                      <th className="px-3 sm:px-6 py-2.5 sm:py-4 font-bold text-slate-700 text-xs sm:text-sm w-44 text-center print:px-2 print:py-1">UPLOAD DOCUMENTS</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200 print:divide-black">
                     {disclosure.academicDocs.map((doc) => (
                       <tr key={doc.id} className="hover:bg-slate-50/50 transition">
-                        <td className="px-6 py-3.5 text-slate-600 font-semibold text-sm print:px-2 print:py-1">{doc.id}</td>
-                        <td className="px-6 py-3.5 text-slate-800 font-semibold text-xs uppercase tracking-wider print:px-2 print:py-1">{doc.title}</td>
-                        <td className="px-6 py-3.5 text-center print:px-2 print:py-1">
+                        <td className="px-3 sm:px-6 py-2.5 sm:py-3.5 text-slate-600 font-semibold text-xs sm:text-sm print:px-2 print:py-1">{doc.id}</td>
+                        <td className="px-3 sm:px-6 py-2.5 sm:py-3.5 text-slate-800 font-semibold text-[10px] sm:text-xs uppercase tracking-wider print:px-2 print:py-1">{doc.title}</td>
+                        <td className="px-3 sm:px-6 py-2.5 sm:py-3.5 text-center print:px-2 print:py-1">
                           <a
                             href={doc.file}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200 px-3 py-1.5 rounded-lg text-xs font-semibold transition no-print active:scale-95"
+                            className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-600 hover:bg-blue-100 border border-blue-200 px-2 sm:px-3 py-1.5 rounded-lg text-[10px] sm:text-xs font-semibold transition no-print active:scale-95 whitespace-nowrap"
                           >
                             <Download size={12} />
                             View Document
@@ -437,7 +436,7 @@ export default function MandatoryDisclosureView() {
 
               {/* Dynamic board examination results */}
               <div className="space-y-6">
-                <h4 className="text-sm font-extrabold text-slate-700 tracking-wide border-b pb-2 print:text-[10px] print:border-black">
+                <h4 className="text-xs sm:text-sm font-extrabold text-slate-700 tracking-wide border-b pb-2 print:text-[10px] print:border-black">
                   LAST THREE-YEAR RESULT OF THE BOARD EXAMINATION (AS PER APPLICABILITY)
                 </h4>
 
@@ -447,9 +446,9 @@ export default function MandatoryDisclosureView() {
                   </div>
                 ) : (
                   <div className="grid gap-6 md:grid-cols-2 print:grid-cols-1 print:gap-4">
-                    
+
                     {/* Class X Results */}
-                    <div className="border border-slate-200 rounded-xl overflow-hidden print:rounded-none print:border-black">
+                    <div className="border border-slate-200 rounded-xl overflow-x-auto print:rounded-none print:border-black">
                       <div className="bg-slate-100 px-4 py-2.5 font-bold text-xs text-slate-800 border-b border-slate-200 print:bg-slate-200 print:border-black">
                         RESULT CLASS: X
                       </div>
@@ -488,7 +487,7 @@ export default function MandatoryDisclosureView() {
                     </div>
 
                     {/* Class XII Results */}
-                    <div className="border border-slate-200 rounded-xl overflow-hidden print:rounded-none print:border-black">
+                    <div className="border border-slate-200 rounded-xl overflow-x-auto print:rounded-none print:border-black">
                       <div className="bg-slate-100 px-4 py-2.5 font-bold text-xs text-slate-800 border-b border-slate-200 print:bg-slate-200 print:border-black">
                         RESULT CLASS: XII
                       </div>
@@ -535,62 +534,62 @@ export default function MandatoryDisclosureView() {
           {/* D: STAFF (TEACHING) */}
           {(activeTab === "all" || activeTab === "staff") && (
             <section id="staff" className={`scroll-mt-20 ${activeTab === "all" ? "page-break" : ""}`}>
-              <h3 className="text-lg font-bold text-slate-800 border-l-4 border-[#f82f53] pl-3 mb-6 print:border-none print:pl-0 print:text-xs print:font-extrabold print:mb-2 flex items-center gap-2">
-                <span className="bg-[#f82f53] text-white w-6 h-6 rounded-full flex items-center justify-center text-xs print:hidden">D</span>
+              <h3 className="text-base sm:text-lg font-bold text-slate-800 border-l-4 border-[#f82f53] pl-2 sm:pl-3 mb-6 print:border-none print:pl-0 print:text-xs print:font-extrabold print:mb-2 flex items-center gap-2">
+                <span className="bg-[#f82f53] text-white w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-[10px] sm:text-xs print:hidden">D</span>
                 D: STAFF (TEACHING)
               </h3>
-              
-              <div className="overflow-hidden border border-slate-200 rounded-xl print:rounded-none print:border-black">
-                <table className="w-full text-left border-collapse">
+
+              <div className="overflow-x-auto border border-slate-200 rounded-xl print:rounded-none print:border-black">
+                <table className="w-full text-left border-collapse min-w-[500px]">
                   <thead>
                     <tr className="bg-slate-50 border-b border-slate-200 print:bg-slate-100 print:border-black">
-                      <th className="px-6 py-4 font-bold text-slate-700 text-sm w-20 print:px-2 print:py-1">SL NO.</th>
-                      <th className="px-6 py-4 font-bold text-slate-700 text-sm print:px-2 print:py-1">INFORMATION</th>
-                      <th className="px-6 py-4 font-bold text-slate-700 text-sm print:px-2 print:py-1">DETAILS</th>
+                      <th className="px-3 sm:px-6 py-2.5 sm:py-4 font-bold text-slate-700 text-xs sm:text-sm w-20 print:px-2 print:py-1">SL NO.</th>
+                      <th className="px-3 sm:px-6 py-2.5 sm:py-4 font-bold text-slate-700 text-xs sm:text-sm print:px-2 print:py-1">INFORMATION</th>
+                      <th className="px-3 sm:px-6 py-2.5 sm:py-4 font-bold text-slate-700 text-xs sm:text-sm print:px-2 print:py-1">DETAILS</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200 print:divide-black">
                     {disclosure.staffDetails.map((staff) => (
                       <tr key={staff.id} className="hover:bg-slate-50/50 transition">
-                        <td className="px-6 py-3.5 text-slate-600 font-semibold text-sm print:px-2 print:py-1">{staff.id}</td>
-                        <td className="px-6 py-3.5 text-slate-800 font-bold text-xs uppercase tracking-wider print:px-2 print:py-1">{staff.label}</td>
-                        <td className="px-6 py-3.5 text-slate-900 font-semibold text-sm print:px-2 print:py-1">
+                        <td className="px-3 sm:px-6 py-2.5 sm:py-3.5 text-slate-600 font-semibold text-xs sm:text-sm print:px-2 print:py-1">{staff.id}</td>
+                        <td className="px-3 sm:px-6 py-2.5 sm:py-3.5 text-slate-800 font-bold text-[10px] sm:text-xs uppercase tracking-wider print:px-2 print:py-1">{staff.label}</td>
+                        <td className="px-3 sm:px-6 py-2.5 sm:py-3.5 text-slate-900 font-semibold text-xs sm:text-sm print:px-2 print:py-1">
                           {staff.isList ? (
-                              <div className="space-y-3">
-                               <span className="font-extrabold text-slate-900 block">{staff.value}</span>
-                               <div className="grid grid-cols-2 md:grid-cols-4 gap-2 no-print">
-                                 <div className="bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-lg flex flex-col items-center border border-slate-200 transition">
-                                   <span className="text-[10px] text-slate-500 font-bold">PGT</span>
-                                   <span className="text-sm font-bold text-slate-800">{disclosure.staffPgtCount}</span>
-                                 </div>
-                                 <div className="bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-lg flex flex-col items-center border border-slate-200 transition">
-                                   <span className="text-[10px] text-slate-500 font-bold">TGT</span>
-                                   <span className="text-sm font-bold text-slate-800">{disclosure.staffTgtCount}</span>
-                                 </div>
-                                 <div className="bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-lg flex flex-col items-center border border-slate-200 transition">
-                                   <span className="text-[10px] text-slate-500 font-bold">PRT</span>
-                                   <span className="text-sm font-bold text-slate-800">{disclosure.staffPrtCount}</span>
-                                 </div>
-                                 <div className="bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-lg flex flex-col items-center border border-slate-200 transition">
-                                   <span className="text-[10px] text-slate-500 font-bold">NTT / OTHERS</span>
-                                   <span className="text-sm font-bold text-slate-800">{disclosure.staffNttCount}</span>
-                                 </div>
-                               </div>
-                               <div className="hidden print:block text-[10px] font-bold text-slate-800">
-                                 Category-wise: PGT: {disclosure.staffPgtCount}, TGT: {disclosure.staffTgtCount}, PRT: {disclosure.staffPrtCount}, NTT/Others: {disclosure.staffNttCount}
-                               </div>
-                               <div className="no-print pt-2">
-                                 <a 
-                                   href={disclosure.staffListFile || "#"} 
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   className="inline-flex items-center gap-1 bg-[#f82f53] hover:bg-[#d82444] text-white text-[11px] font-bold px-3 py-1 rounded-lg transition active:scale-95 shadow-sm"
-                                 >
-                                   <Download size={10} />
-                                   Download Complete Staff List (PDF)
-                                 </a>
-                               </div>
-                             </div>
+                            <div className="space-y-3">
+                              <span className="font-extrabold text-slate-900 block">{staff.value}</span>
+                              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 no-print">
+                                <div className="bg-slate-100 hover:bg-slate-200 px-2 sm:px-3 py-2 rounded-lg flex flex-col items-center border border-slate-200 transition">
+                                  <span className="text-[10px] text-slate-500 font-bold">PGT</span>
+                                  <span className="text-xs sm:text-sm font-bold text-slate-800">{disclosure.staffPgtCount}</span>
+                                </div>
+                                <div className="bg-slate-100 hover:bg-slate-200 px-2 sm:px-3 py-2 rounded-lg flex flex-col items-center border border-slate-200 transition">
+                                  <span className="text-[10px] text-slate-500 font-bold">TGT</span>
+                                  <span className="text-xs sm:text-sm font-bold text-slate-800">{disclosure.staffTgtCount}</span>
+                                </div>
+                                <div className="bg-slate-100 hover:bg-slate-200 px-2 sm:px-3 py-2 rounded-lg flex flex-col items-center border border-slate-200 transition">
+                                  <span className="text-[10px] text-slate-500 font-bold">PRT</span>
+                                  <span className="text-xs sm:text-sm font-bold text-slate-800">{disclosure.staffPrtCount}</span>
+                                </div>
+                                <div className="bg-slate-100 hover:bg-slate-200 px-2 sm:px-3 py-2 rounded-lg flex flex-col items-center border border-slate-200 transition">
+                                  <span className="text-[10px] text-slate-500 font-bold">NTT / OTHERS</span>
+                                  <span className="text-xs sm:text-sm font-bold text-slate-800">{disclosure.staffNttCount}</span>
+                                </div>
+                              </div>
+                              <div className="hidden print:block text-[10px] font-bold text-slate-800">
+                                Category-wise: PGT: {disclosure.staffPgtCount}, TGT: {disclosure.staffTgtCount}, PRT: {disclosure.staffPrtCount}, NTT/Others: {disclosure.staffNttCount}
+                              </div>
+                              <div className="no-print pt-2">
+                                <a
+                                  href={disclosure.staffListFile || "#"}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 bg-[#f82f53] hover:bg-[#d82444] text-white text-[11px] font-bold px-3 py-1 rounded-lg transition active:scale-95 shadow-sm whitespace-nowrap"
+                                >
+                                  <Download size={10} />
+                                  Download Complete Staff List (PDF)
+                                </a>
+                              </div>
+                            </div>
                           ) : (
                             staff.value
                           )}
@@ -606,34 +605,34 @@ export default function MandatoryDisclosureView() {
           {/* E: SCHOOL INFRASTRUCTURE */}
           {(activeTab === "all" || activeTab === "infrastructure") && (
             <section id="infrastructure" className={`scroll-mt-20 ${activeTab === "all" ? "page-break" : ""}`}>
-              <h3 className="text-lg font-bold text-slate-800 border-l-4 border-[#f82f53] pl-3 mb-6 print:border-none print:pl-0 print:text-xs print:font-extrabold print:mb-2 flex items-center gap-2">
-                <span className="bg-[#f82f53] text-white w-6 h-6 rounded-full flex items-center justify-center text-xs print:hidden">E</span>
+              <h3 className="text-base sm:text-lg font-bold text-slate-800 border-l-4 border-[#f82f53] pl-2 sm:pl-3 mb-6 print:border-none print:pl-0 print:text-xs print:font-extrabold print:mb-2 flex items-center gap-2">
+                <span className="bg-[#f82f53] text-white w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-[10px] sm:text-xs print:hidden">E</span>
                 E: SCHOOL INFRASTRUCTURE
               </h3>
-              
-              <div className="overflow-hidden border border-slate-200 rounded-xl print:rounded-none print:border-black">
-                <table className="w-full text-left border-collapse">
+
+              <div className="overflow-x-auto border border-slate-200 rounded-xl print:rounded-none print:border-black">
+                <table className="w-full text-left border-collapse min-w-[500px]">
                   <thead>
                     <tr className="bg-slate-50 border-b border-slate-200 print:bg-slate-100 print:border-black">
-                      <th className="px-6 py-4 font-bold text-slate-700 text-sm w-20 print:px-2 print:py-1">SL NO.</th>
-                      <th className="px-6 py-4 font-bold text-slate-700 text-sm print:px-2 print:py-1">INFORMATION</th>
-                      <th className="px-6 py-4 font-bold text-slate-700 text-sm print:px-2 print:py-1">DETAILS</th>
+                      <th className="px-3 sm:px-6 py-2.5 sm:py-4 font-bold text-slate-700 text-xs sm:text-sm w-20 print:px-2 print:py-1">SL NO.</th>
+                      <th className="px-3 sm:px-6 py-2.5 sm:py-4 font-bold text-slate-700 text-xs sm:text-sm print:px-2 print:py-1">INFORMATION</th>
+                      <th className="px-3 sm:px-6 py-2.5 sm:py-4 font-bold text-slate-700 text-xs sm:text-sm print:px-2 print:py-1">DETAILS</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200 print:divide-black">
                     {disclosure.infrastructureDetails.map((infra) => (
                       <tr key={infra.id} className="hover:bg-slate-50/50 transition">
-                        <td className="px-6 py-3.5 text-slate-600 font-semibold text-sm print:px-2 print:py-1">{infra.id}</td>
-                        <td className="px-6 py-3.5 text-slate-800 font-bold text-xs uppercase tracking-wider print:px-2 print:py-1">{infra.label}</td>
-                        <td className="px-6 py-3.5 text-slate-900 font-semibold text-sm print:px-2 print:py-1">
+                        <td className="px-3 sm:px-6 py-2.5 sm:py-3.5 text-slate-600 font-semibold text-xs sm:text-sm print:px-2 print:py-1">{infra.id}</td>
+                        <td className="px-3 sm:px-6 py-2.5 sm:py-3.5 text-slate-800 font-bold text-[10px] sm:text-xs uppercase tracking-wider print:px-2 print:py-1">{infra.label}</td>
+                        <td className="px-3 sm:px-6 py-2.5 sm:py-3.5 text-slate-900 font-semibold text-xs sm:text-sm print:px-2 print:py-1">
                           {infra.isLabs ? (
                             <div className="space-y-3">
                               <span className="font-extrabold text-slate-900 block">{infra.value}</span>
-                              <div className="grid grid-cols-2 md:grid-cols-3 gap-2 border border-slate-200 rounded-xl p-3 bg-slate-50/60 no-print">
+                              <div className="grid grid-cols-2 md:grid-cols-3 gap-2 border border-slate-200 rounded-xl p-2 sm:p-3 bg-slate-50/60 no-print">
                                 {disclosure.labs.map((lab, i) => (
-                                  <div key={i} className="flex flex-col bg-white border border-slate-100 p-2.5 rounded-lg shadow-sm">
-                                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">{lab.name}</span>
-                                    <span className="text-xs font-bold text-slate-800 mt-0.5">{lab.size}</span>
+                                  <div key={i} className="flex flex-col bg-white border border-slate-100 p-2 sm:p-2.5 rounded-lg shadow-sm">
+                                    <span className="text-[9px] sm:text-[10px] text-slate-400 font-bold uppercase tracking-wider">{lab.name}</span>
+                                    <span className="text-[10px] sm:text-xs font-bold text-slate-800 mt-0.5">{lab.size}</span>
                                   </div>
                                 ))}
                               </div>
@@ -649,7 +648,7 @@ export default function MandatoryDisclosureView() {
                                 href={infra.value}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 bg-red-50 text-red-600 hover:bg-red-100 border border-red-200 px-3 py-1.5 rounded-lg text-xs font-semibold transition no-print active:scale-95"
+                                className="inline-flex items-center gap-1.5 bg-red-50 text-red-600 hover:bg-red-100 border border-red-200 px-2 sm:px-3 py-1.5 rounded-lg text-[10px] sm:text-xs font-semibold transition no-print active:scale-95 whitespace-nowrap"
                               >
                                 <ExternalLink size={12} />
                                 Watch School Tour / Inspection Video
