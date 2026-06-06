@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
 import { NewsItem } from "../../../../types/news";
+import NewsImageLightbox from "../../component/newsNotice/NewsImageLightbox";
 
 export default function NewsDetailPage() {
   const params = useParams();
@@ -13,6 +14,7 @@ export default function NewsDetailPage() {
   const [news, setNews] = useState<NewsItem | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [showLightbox, setShowLightbox] = useState(false);
 
   const id = params?.id as string;
 
@@ -88,7 +90,10 @@ export default function NewsDetailPage() {
       </div>
 
       {/* Hero Image */}
-      <section className="relative w-full h-64 sm:h-80 md:h-96 bg-gray-200">
+      <section
+        className="relative w-full h-64 sm:h-80 md:h-96 bg-gray-200 cursor-pointer group"
+        onClick={() => setShowLightbox(true)}
+      >
         <Image
           src={news.image}
           alt={news.title}
@@ -97,6 +102,11 @@ export default function NewsDetailPage() {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
+          <span className="text-white text-sm font-medium bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm">
+            🔍 Click to view full image
+          </span>
+        </div>
         <div className="absolute bottom-0 left-0 right-0 p-6 max-w-4xl mx-auto">
           <span className="inline-block bg-[#f82f53] text-white text-xs font-semibold px-3 py-1 rounded-full mb-3">
             {news.category}
@@ -130,6 +140,16 @@ export default function NewsDetailPage() {
           ))}
         </article>
 
+        {/* View Full Image Button */}
+        <div className="mt-6">
+          <button
+            onClick={() => setShowLightbox(true)}
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition font-medium text-sm"
+          >
+            📷 View Full Image
+          </button>
+        </div>
+
         {/* Share / Back CTA */}
         <div className="mt-10 pt-6 border-t border-gray-200 flex flex-wrap gap-4 items-center justify-between">
           <Link
@@ -141,6 +161,15 @@ export default function NewsDetailPage() {
           </Link>
         </div>
       </section>
+
+      {/* Image Lightbox */}
+      {showLightbox && news && (
+        <NewsImageLightbox
+          image={news.image}
+          title={news.title}
+          onClose={() => setShowLightbox(false)}
+        />
+      )}
     </>
   );
 }

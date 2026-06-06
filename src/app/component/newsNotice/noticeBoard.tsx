@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { NewsItem } from "../../../../types/news"
+import NewsImageLightbox from "./NewsImageLightbox"
 
 const categories = ["All", "Events", "Announcements", "Academics", "General"]
 const limit = 3
@@ -12,6 +13,7 @@ export default function NoticeBoard() {
   const [total, setTotal] = useState(0)
   const [category, setCategory] = useState("All")
   const [loading, setLoading] = useState(false)
+  const [lightboxImage, setLightboxImage] = useState<{ image: string; title: string } | null>(null)
 
   useEffect(() => {
     setLoading(true)
@@ -48,9 +50,8 @@ export default function NoticeBoard() {
               setCategory(cat)
               setPage(1)
             }}
-            className={`px-4 py-2 rounded-full border ${
-              category === cat ? "bg-red-500 text-white" : "bg-white text-black"
-            }`}
+            className={`px-4 py-2 rounded-full border ${category === cat ? "bg-red-500 text-white" : "bg-white text-black"
+              }`}
           >
             {cat}
           </button>
@@ -67,13 +68,21 @@ export default function NoticeBoard() {
               key={item._id}
               className="bg-white rounded-lg shadow-md overflow-hidden"
             >
-              <a href={`/news/${item._id}`} className="block">
+              <div
+                className="relative group cursor-pointer"
+                onClick={() => setLightboxImage({ image: item.image, title: item.title })}
+              >
                 <img
                   src={item.image}
                   alt={item.title}
                   className="w-full h-48 object-cover"
                 />
-              </a>
+                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <span className="text-white text-sm font-medium bg-white/20 px-3 py-1.5 rounded-full backdrop-blur-sm">
+                    🔍 View Image
+                  </span>
+                </div>
+              </div>
               <div className="p-4">
                 <div className="flex justify-between items-center mb-2">
                   <span className="bg-blue-100 text-blue-800 text-sm font-semibold px-2 py-1 rounded">
@@ -91,14 +100,22 @@ export default function NoticeBoard() {
                     ? item.content.slice(0, 100) + "..."
                     : item.content || ""}
                 </p>
-                {item.content && item.content.length > 100 && (
-                  <a
-                    href={`/news/${item._id}`}
-                    className="text-red-500 font-semibold mt-2 inline-block hover:underline"
+                <div className="flex items-center gap-3 mt-2">
+                  {item.content && item.content.length > 100 && (
+                    <a
+                      href={`/news/${item._id}`}
+                      className="text-red-500 font-semibold inline-block hover:underline"
+                    >
+                      Read More
+                    </a>
+                  )}
+                  <button
+                    onClick={() => setLightboxImage({ image: item.image, title: item.title })}
+                    className="text-blue-600 font-semibold inline-block hover:underline text-sm"
                   >
-                    Read More
-                  </a>
-                )}
+                    📷 View Full Image
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -124,6 +141,15 @@ export default function NoticeBoard() {
           Next
         </button>
       </div>
+
+      {/* Image Lightbox */}
+      {lightboxImage && (
+        <NewsImageLightbox
+          image={lightboxImage.image}
+          title={lightboxImage.title}
+          onClose={() => setLightboxImage(null)}
+        />
+      )}
     </section>
   )
 }
