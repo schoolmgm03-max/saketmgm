@@ -28,7 +28,8 @@ const defaultDisclosure = {
     { id: 2, title: "ANNUAL ACADEMIC CALENDAR", file: "/pdfs/anual.pdf" },
     { id: 3, title: "LIST OF SCHOOL MANAGEMENT COMMITTEE (SMC)", file: "/pdfs/SCHOOL-MANAGEMENT-COMMITTEE-(SMC)-1736592835.pdf" },
     { id: 4, title: "LIST OF PARENTS TEACHERS ASSOCIATION (PTA) MEMBERS", file: "/pdfs/LIST-OF-PARENTS--TEACHERS-ASSOCIATION-(PTA)-MEMBERS--1721800189.pdf" },
-    { id: 5, title: "LAST THREE-YEAR RESULT OF THE BOARD EXAMINATION (AS PER APPLICABILITY)", file: "/pdfs/consolidated-Result-of-AISSE-AISSCE-Examination--1686540272.pdf" }
+    { id: 5, title: "LAST THREE-YEAR RESULT OF THE BOARD EXAMINATION (AS PER APPLICABILITY)", file: "/pdfs/consolidated-Result-of-AISSE-AISSCE-Examination--1686540272.pdf" },
+    { id: 6, title: "BOOK LIST", file: "#" }
   ],
   staffDetails: [
     { id: 1, label: "PRINCIPAL", value: "MR. BIBHAS RANJAN PAL (M.A., B.Ed.)" },

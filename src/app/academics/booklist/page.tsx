@@ -10,6 +10,21 @@ export default function BookListPage() {
     useEffect(() => {
         const fetchBookList = async () => {
             try {
+                // First check mandatory disclosure for BOOK LIST
+                const discRes = await fetch("/api/admin/mandatoryDisclosure");
+                const discData = await discRes.json();
+                if (discRes.ok && discData?.academicDocs) {
+                    const bookDoc = discData.academicDocs.find(
+                        (doc: { id: number; title: string; file: string }) =>
+                            doc.title.toUpperCase().includes("BOOK LIST")
+                    );
+                    if (bookDoc && bookDoc.file && bookDoc.file !== "#") {
+                        setBookListUrl(bookDoc.file);
+                        return;
+                    }
+                }
+
+                // Fallback to standalone BookList model
                 const res = await fetch("/api/admin/booklist");
                 const data = await res.json();
                 if (res.ok && data?.url) {
