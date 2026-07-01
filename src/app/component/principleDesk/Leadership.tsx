@@ -20,7 +20,7 @@ export default function Leadership() {
         const res = await fetch("/api/admin/mandatoryDisclosure");
         if (res.ok) {
           const data = await res.json();
-          const principalInfo = data.schoolInfo?.find((info: any) => info.id === 5);
+          const principalInfo = data.schoolInfo?.find((info: { id: number; value: string }) => info.id === 5);
           if (principalInfo?.value) {
             // Split by comma to extract the name part
             const namePart = principalInfo.value.split(",")[0].trim();
