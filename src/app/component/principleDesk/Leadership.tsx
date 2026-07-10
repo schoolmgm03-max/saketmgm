@@ -11,7 +11,7 @@ interface Profile {
 }
 
 export default function Leadership() {
-  const [principalName, setPrincipalName] = useState("Mr. BIBHAS RANJAN PAL");
+  const [principalName, setPrincipalName] = useState("Dr. Ganesh Digamber Patil");
   const [selectedRoleType, setSelectedRoleType] = useState("Principal");
 
   useEffect(() => {

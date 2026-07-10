@@ -35,7 +35,7 @@ export default function MandatoryDisclosureView() {
       { id: 2, label: "AFFILIATION NO. (IF APPLICABLE)", value: "1030477" },
       { id: 3, label: "SCHOOL CODE (IF APPLICABLE)", value: "50498" },
       { id: 4, label: "COMPLETE ADDRESS WITH PIN CODE", value: "LALDHAU, PURANPURA, VIDISHA, MADHYA PRADESH - 464001" },
-      { id: 5, label: "PRINCIPAL NAME & QUALIFICATION", value: "MR. BIBHAS RANJAN PAL, M.A., B.Ed." },
+      { id: 5, label: "PRINCIPAL NAME & QUALIFICATION", value: "DR. GANESH DIGAMBER PATIL" },
       { id: 6, label: "SCHOOL EMAIL ID", value: "saketmgm@gmail.com" },
       { id: 7, label: "CONTACT DETAILS (LANDLINE/MOBILE)", value: "07592-297036 / 8349929343" },
     ],
@@ -59,7 +59,7 @@ export default function MandatoryDisclosureView() {
       { id: 6, title: "BOOK LIST", file: "#" }
     ],
     staffDetails: [
-      { id: 1, label: "PRINCIPAL", value: "MR. BIBHAS RANJAN PAL (M.A., B.Ed.)" },
+      { id: 1, label: "PRINCIPAL", value: "DR. GANESH DIGAMBER PATIL" },
       { id: 2, label: "VICE PRINCIPAL", value: "0" },
       { id: 3, label: "HEADMISTRESS/HEADMASTER", value: "0" },
       { id: 4, label: "TOTAL NO. OF TEACHERS", value: "114", isList: true },
@@ -683,7 +683,7 @@ export default function MandatoryDisclosureView() {
             <div className="w-40 border-b border-black mb-1"></div>
             <span>Signature of Principal</span>
             <span className="text-[9px] font-normal text-slate-500">
-              ({disclosure.schoolInfo.find(info => info.id === 5)?.value.split(",")[0] || "Mr. Bibhas Ranjan Pal"})
+              ({disclosure.schoolInfo.find(info => info.id === 5)?.value.split(",")[0] || "Dr. Ganesh Digamber Patil"})
             </span>
           </div>
           <div className="text-center flex flex-col">

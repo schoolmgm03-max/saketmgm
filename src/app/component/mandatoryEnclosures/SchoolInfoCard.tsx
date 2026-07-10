@@ -3,7 +3,7 @@ const schoolInfo = [
   { label: "Affiliation No.", value: "1030477" },
   { label: "School Code", value: "50498" },
   { label: "Address", value: "Laldhau, Puranpura, Vidisha, Madhya Pradesh, 464001" },
-  { label: "Principal Name & Qualification", value: "Mr. Bibhas Ranjan Pal, MA B.Ed." },
+  { label: "Principal Name & Qualification", value: "Dr. Ganesh Digamber Patil" },
   { label: "School Email ID", value: "saketmgm@gmail.com" },
   { label: "Contact Details", value: "07592-297 036 / 8349929343" },
 ];

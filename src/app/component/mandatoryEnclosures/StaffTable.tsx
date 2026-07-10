@@ -11,7 +11,7 @@ export default function StaffInfo() {
         <div className="flex flex-col sm:flex-row justify-between">
           <span className="font-medium text-gray-600">Principal</span>
           <span className="text-gray-900 font-semibold">
-            Mr. Bibhas Ranjan Pal, MA B.Ed.
+            Dr. Ganesh Digamber Patil
           </span>
         </div>
 
