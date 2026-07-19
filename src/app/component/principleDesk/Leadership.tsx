@@ -50,26 +50,10 @@ export default function Leadership() {
       role: "Principal",
       heading: "From the Principal's Desk",
       name: principalName,
-      image: "/principal.jpg",
-      content: `On behalf of Team Saket MGM Sr. Sec. School, I am happy to welcome you all to the 2024-25 school year! 
-            I am honoured and privileged to lead the esteemed school as the Principal. 
-            I sincerely express that I will ensure that the mind of the students are influenced with positive thought, 
-            supported by the ambience of the school. It will establish a new wave of emotion and a kind of connection to 
-            the world that will open up new horizons to our students and empower them to attain their goals.
-            
-            We in Saket MGM Sr. Sec School believe that education is a collaborative effort among Parents, Teachers and Students. 
-            It is our priority to make each and every student attain success with active participation in all activities amounting 
-            to holistic development. We offer students the best possible opportunities to become confident, thoughtful young learners 
-            and get themselves prepared for meeting any future challenges in an exciting and increasingly globalised world.
+      image: "/principal_img.jpeg",
+      content: `It is a matter of great pleasure for us to share kaleidoscopic view of our school activities through our website.At Saket MGM Sr. Secondary School, we meticulously plan our pedagogical activities keeping in view the 360° development (1.Q,E.Q, S.Q,A.Q, F.Q) of our students. We endeavour to empower and upskill each of our students through innovative activities and events to become responsible citizens of this country and the world, fully aware of future challenges and ready to tackle them. Self-awareness, social awareness, environmental awareness, and a deep respect for our great Indian heritage, ethos, and values form the very foundation of our vision & systems. We at Saket MGM Sr. Sec. School believe that education is a collaborative effort among parents, teachers, and students. We believe that each student has a unique strength and the potential to make a positive impact on the surrounding world. Harward Gardner's theory of Multiple intelligence provides framework for the modus operandi of our pedagogies and learning objectives. Our mission is to help every child discover and develop the best within each of them, and develop it to its optimum level. Sports- and arts-integrated, competency-based experiential pedagogies make learning a genuine joy at Saket MGM Sr. Sec. School to achieve this objective. I am sure that this website will play a vital role to bridge the information gap between students, community and school contributing to the cause of excellence in education through our collaborative and synergistic effort. We deeply appreciate your cooperation, support, and encouragement in our pursuit to shape empowered, skilled, responsible citizens of fast changing world —individuals who are empowered with the latest technological know-how and guided by human values, 21st-century skills, knowledge, and information. We look forward to your continued love and support for this great institution through your active involvement in future also.
 
-            Education inculcated in the mind of the students make him/her recognize the power and beauty that lies within him/her. 
-            Education does not merely mean academic excellence but also a harmonious and synchronized combination of hand, i.e. Skills 
-            such as various arts, Head i.e. Intellectual Power, and Heart i.e. value system.
-
-            In the present era of digital world, it is the biggest challenge before educators and Parents to nurture the young minds 
-            with the indelible impressions of holistic education. I take the opportunity to thank all our stake holders, especially Parents 
-            who have trusted us and supported the school. We ensure working in a team spirit on providing a safe, conducive and encouraging 
-            school environment that will support the entire learning system.`
+We wish you all a learning-filled years of momentous achievements and milestones as Saket MGM Sr Sec.School members`
     },
     {
       role: "Chairman",
@@ -120,7 +104,7 @@ export default function Leadership() {
         />
         <div>
           <h2 className="text-2xl font-bold text-[#f82f53]">{selectedRole.heading}</h2>
-          <p className="mt-4 text-gray-700 leading-relaxed">{selectedRole.content}</p>
+          <p className="mt-4 text-gray-700 leading-relaxed whitespace-pre-line">{selectedRole.content}</p>
           <p className="mt-4 text-lg font-semibold text-teal-500">{selectedRole.name}</p>
         </div>
       </div>
